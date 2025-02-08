@@ -1,6 +1,9 @@
 package singleton
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 // sync.Once ensures lazy initialization and thread safety
 var once sync.Once
@@ -17,9 +20,21 @@ func newSingleton() *Singleton {
 }
 
 // Get Create method to return the singleton instance
-func Get() *Singleton {
+func getSingleton() *Singleton {
 	once.Do(func() {
 		instance = newSingleton()
 	})
 	return instance
+}
+
+func TestSingleton() {
+	//Test the Singleton
+	s1 := getSingleton()
+	s2 := getSingleton()
+
+	if s1 == s2 {
+		fmt.Println("Both are the same instance")
+	} else {
+		fmt.Println("Different instances")
+	}
 }
