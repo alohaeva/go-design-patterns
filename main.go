@@ -1,6 +1,7 @@
 package main
 
 import (
+	"design-patterns/builder"
 	"design-patterns/factory"
 	"design-patterns/prototype"
 	"design-patterns/singleton"
@@ -12,4 +13,5 @@ func main() {
 	factory.TestFactory("email")
 	factory.TestFactory("slack")
 	factory.TestFactory("sms")
+	builder.TestBuilder()
 }
